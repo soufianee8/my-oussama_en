@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم الإنجليزية - English Learning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #f1c40f;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --card-color: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary-color: #2980b9;
+            --secondary-color: #27ae60;
+            --accent-color: #f39c12;
+            --background-color: #2c3e50;
+            --text-color: #ecf0f1;
+            --card-color: #34495e;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .settings-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            min-height: calc(100vh - 140px);
+            padding: 2rem 0;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Home Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #333;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Vocabulary Section */
+        .vocab-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-card {
+            background-color: var(--card-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .vocab-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .vocab-item {
+            background-color: var(--card-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .vocab-item .word {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .vocab-item .meaning {
+            margin-bottom: 1rem;
+        }
+
+        .vocab-item .pronounce-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .vocab-item .pronounce-btn:hover {
+            background-color: #27ae60;
+        }
+
+        /* Pronunciation Section */
+        .pronunciation-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .input-group button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-group button:hover {
+            background-color: #2980b9;
+        }
+
+        .voice-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .voice-controls select {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: var(--card-color);
+            color: var(--text-color);
+        }
+
+        /* Grammar Section */
+        .grammar-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .topic-card {
+            background-color: var(--card-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .topic-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .topic-card ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        .topic-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .learn-more {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .learn-more:hover {
+            background-color: #2980b9;
+        }
+
+        /* Exercises Section */
+        .exercise-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .exercise-card {
+            background-color: var(--card-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .exercise-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .exercise-area {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option {
+            background-color: #f1f1f1;
+            padding: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .option:hover {
+            background-color: #e1e1e1;
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .submit-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: #27ae60;
+        }
+
+        .result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .result.correct {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .result.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        /* Settings Panel */
+        .settings-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100vh;
+            background-color: var(--card-color);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            overflow-y: auto;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .settings-panel.active {
+            right: 0;
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .close-settings {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .setting-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .setting-group h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .theme-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .theme-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--primary-color);
+            background: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .language-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-option:hover {
+            background-color: #f1f1f1;
+        }
+
+        .language-option.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .settings-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-language"></i>
+                <span>تعلم الإنجليزية</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="home">الرئيسية</a></li>
+                    <li><a href="#" class="nav-link" data-section="vocabulary">المفردات</a></li>
+                    <li><a href="#" class="nav-link" data-section="pronunciation">النطق</a></li>
+                    <li><a href="#" class="nav-link" data-section="grammar">القواعد</a></li>
+                    <li><a href="#" class="nav-link" data-section="exercises">التمارين</a></li>
+                </ul>
+            </nav>
+            <button class="settings-btn" id="settingsBtn">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>مرحباً بك في تطبيق تعلم الإنجليزية</h1>
+                <p>منصة تفاعلية شاملة لتعلم اللغة الإنجليزية بسهولة وفعالية. ابدأ رحلتك التعليمية اليوم!</p>
+                <a href="#" class="cta-btn" data-section="vocabulary">ابدأ التعلم الآن</a>
+            </div>
+
+            <h2 class="section-title">مميزات التطبيق</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h3>المفردات</h3>
+                    <p>تعلم مفردات جديدة مع الترجمة والنطق الصحيح</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-volume-up"></i>
+                    <h3>النطق</h3>
+                    <p>استمع إلى نطق الكلمات والعبارات الإنجليزية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-pencil-alt"></i>
+                    <h3>القواعد</h3>
+                    <p>تعلم قواعد اللغة الإنجليزية بطريقة مبسطة</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>التمارين</h3>
+                    <p>اختبر معرفتك من خلال تمارين تفاعلية متنوعة</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vocabulary Section -->
+        <section id="vocabulary" class="section">
+            <h2 class="section-title">المفردات</h2>
+            
+            <div class="vocab-categories">
+                <div class="category-card" data-category="animals">
+                    <i class="fas fa-paw"></i>
+                    <h3>الحيوانات</h3>
+                </div>
+                <div class="category-card" data-category="food">
+                    <i class="fas fa-utensils"></i>
+                    <h3>الطعام</h3>
+                </div>
+                <div class="category-card" data-category="family">
+                    <i class="fas fa-users"></i>
+                    <h3>العائلة</h3>
+                </div>
+                <div class="category-card" data-category="colors">
+                    <i class="fas fa-palette"></i>
+                    <h3>الألوان</h3>
+                </div>
+            </div>
+
+            <div class="vocab-list" id="vocabList">
+                <!-- Vocabulary items will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- Pronunciation Section -->
+        <section id="pronunciation" class="section">
+            <h2 class="section-title">النطق</h2>
+            
+            <div class="pronunciation-box">
+                <p>اكتب أي كلمة أو جملة باللغة الإنجليزية لسماع نطقها:</p>
+                
+                <div class="input-group">
+                    <input type="text" id="wordInput" placeholder="أدخل كلمة أو جملة...">
+                    <button id="pronounceBtn">استمع</button>
+                </div>
+                
+                <div class="voice-controls">
+                    <select id="voiceSelect">
+                        <option value="female">صوت أنثى</option>
+                        <option value="male">صوت ذكر</option>
+                    </select>
+                    
+                    <select id="speedSelect">
+                        <option value="0.5">بطيء</option>
+                        <option value="1" selected>عادي</option>
+                        <option value="1.5">سريع</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grammar Section -->
+        <section id="grammar" class="section">
+            <h2 class="section-title">قواعد اللغة الإنجليزية</h2>
+            
+            <div class="grammar-topics">
+                <div class="topic-card">
+                    <h3>الأزمنة</h3>
+                    <ul>
+                        <li>المضارع البسيط (Present Simple)</li>
+                        <li>الماضي البسيط (Past Simple)</li>
+                        <li>المستقبل البسيط (Future Simple)</li>
+                        <li>المضارع المستمر (Present Continuous)</li>
+                    </ul>
+                    <a href="#" class="learn-more">تعلم المزيد</a>
+                </div>
+                
+                <div class="topic-card">
+                    <h3>الضمائر</h3>
+                    <ul>
+                        <li>ضمائر الفاعل (Subject Pronouns)</li>
+                        <li>ضمائر المفعول (Object Pronouns)</li>
+                        <li>ضمائر الملكية (Possessive Pronouns)</li>
+                        <li>ضمائر الإشارة (Demonstrative Pronouns)</li>
+                    </ul>
+                    <a href="#" class="learn-more">تعلم المزيد</a>
+                </div>
+                
+                <div class="topic-card">
+                    <h3>الصفات والأحوال</h3>
+                    <ul>
+                        <li>الصفات (Adjectives)</li>
+                        <li>أحوال الزمان والمكان (Adverbs)</li>
+                        <li>مقارنة الصفات (Comparative Adjectives)</li>
+                        <li>صيغة التفضيل (Superlative Adjectives)</li>
+                    </ul>
+                    <a href="#" class="learn-more">تعلم المزيد</a>
+                </div>
+                
+                <div class="topic-card">
+                    <h3>الجمل الشرطية</h3>
+                    <ul>
+                        <li>الجمل الشرطية من النوع الأول</li>
+                        <li>الجمل الشرطية من النوع الثاني</li>
+                        <li>الجمل الشرطية من النوع الثالث</li>
+                        <li>الجمل الشرطية المختلطة</li>
+                    </ul>
+                    <a href="#" class="learn-more">تعلم المزيد</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercises Section -->
+        <section id="exercises" class="section">
+            <h2 class="section-title">التمارين التفاعلية</h2>
+            
+            <div class="exercise-types">
+                <div class="exercise-card" data-type="multiple-choice">
+                    <i class="fas fa-list-ol"></i>
+                    <h3>اختيار من متعدد</h3>
+                    <p>اختر الإجابة الصحيحة من بين الخيارات المعطاة</p>
+                </div>
+                
+                <div class="exercise-card" data-type="fill-blanks">
+                    <i class="fas fa-edit"></i>
+                    <h3>ملء الفراغات</h3>
+                    <p>املأ الفراغات بالكلمات المناسبة</p>
+                </div>
+                
+                <div class="exercise-card" data-type="matching">
+                    <i class="fas fa-object-group"></i>
+                    <h3>التوصيل</h3>
+                    <p>وصل الكلمة بمعناها الصحيح</p>
+                </div>
+            </div>
+            
+            <div class="exercise-area" id="exerciseArea">
+                <!-- Exercise content will be loaded here dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h2>الإعدادات</h2>
+            <button class="close-settings" id="closeSettings">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="setting-group">
+            <h3>المظهر</h3>
+            <div class="theme-options">
+                <button class="theme-btn active" data-theme="light">وضع مضيء</button>
+                <button class="theme-btn" data-theme="dark">وضع ليلي</button>
+            </div>
+        </div>
+        
+        <div class="setting-group">
+            <h3>لغة الواجهة</h3>
+            <div class="language-options">
+                <div class="language-option active" data-lang="ar">
+                    <span>العربية</span>
+                </div>
+                <div class="language-option" data-lang="fr">
+                    <span>Français</span>
+                </div>
+                <div class="language-option" data-lang="en">
+                    <span>English</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="setting-group">
+            <h3>إعدادات الصوت</h3>
+            <div class="voice-controls">
+                <select id="settingsVoiceSelect">
+                    <option value="female">صوت أنثى</option>
+                    <option value="male">صوت ذكر</option>
+                </select>
+                
+                <select id="settingsSpeedSelect">
+                    <option value="0.5">بطيء</option>
+                    <option value="1" selected>عادي</option>
+                    <option value="1.5">سريع</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <i class="fas fa-language"></i>
+                <span>تعلم الإنجليزية</span>
+            </div>
+            <p>منصة تعليمية تفاعلية لتعلم اللغة الإنجليزية بكل سهولة</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>جميع الحقوق محفوظة &copy; 2023</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample vocabulary data
+        const vocabularyData = {
+            animals: [
+                { word: "Cat", meaning: "قطة", pronunciation: "kat" },
+                { word: "Dog", meaning: "كلب", pronunciation: "dɔɡ" },
+                { word: "Elephant", meaning: "فيل", pronunciation: "ˈɛlɪfənt" },
+                { word: "Lion", meaning: "أسد", pronunciation: "ˈlaɪən" },
+                { word: "Tiger", meaning: "نمر", pronunciation: "ˈtaɪɡər" }
+            ],
+            food: [
+                { word: "Apple", meaning: "تفاحة", pronunciation: "ˈæpəl" },
+                { word: "Banana", meaning: "موز", pronunciation: "bəˈnɑːnə" },
+                { word: "Bread", meaning: "خبز", pronunciation: "brɛd" },
+                { word: "Milk", meaning: "حليب", pronunciation: "mɪlk" },
+                { word: "Water", meaning: "ماء", pronunciation: "ˈwɔːtər" }
+            ],
+            family: [
+                { word: "Father", meaning: "أب", pronunciation: "ˈfɑːðər" },
+                { word: "Mother", meaning: "أم", pronunciation: "ˈmʌðər" },
+                { word: "Brother", meaning: "أخ", pronunciation: "ˈbrʌðər" },
+                { word: "Sister", meaning: "أخت", pronunciation: "ˈsɪstər" },
+                { word: "Grandfather", meaning: "جد", pronunciation: "ˈɡrænˌfɑːðər" }
+            ],
+            colors: [
+                { word: "Red", meaning: "أحمر", pronunciation: "rɛd" },
+                { word: "Blue", meaning: "أزرق", pronunciation: "bluː" },
+                { word: "Green", meaning: "أخضر", pronunciation: "ɡriːn" },
+                { word: "Yellow", meaning: "أصفر", pronunciation: "ˈjɛloʊ" },
+                { word: "Black", meaning: "أسود", pronunciation: "blæk" }
+            ]
+        };
+
+        // Sample exercise data
+        const exerciseData = {
+            "multiple-choice": [
+                {
+                    question: "ما معنى كلمة 'Book'؟",
+                    options: ["كتاب", "قلم", "مقعد", "سيارة"],
+                    correctAnswer: 0
+                },
+                {
+                    question: "اختر الجملة الصحيحة:",
+                    options: [
+                        "He go to school every day",
+                        "He goes to school every day",
+                        "He going to school every day",
+                        "He is go to school every day"
+                    ],
+                    correctAnswer: 1
+                }
+            ],
+            "fill-blanks": [
+                {
+                    question: "أكمل الجملة: I _____ to the store yesterday.",
+                    options: ["go", "went", "going", "goes"],
+                    correctAnswer: 1
+                }
+            ],
+            "matching": [
+                {
+                    question: "وصل الكلمة بمعناها الصحيح:",
+                    pairs: [
+                        { word: "Sun", meaning: "شمس" },
+                        { word: "Moon", meaning: "قمر" },
+                        { word: "Star", meaning: "نجمة" },
+                        { word: "Sky", meaning: "سماء" }
+                    ]
+                }
+            ]
+        };
+
+        // DOM Elements
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const settingsPanel = document.getElementById('settingsPanel');
+        const closeSettings = document.getElementById('closeSettings');
+        const themeButtons = document.querySelectorAll('.theme-btn');
+        const languageOptions = document.querySelectorAll('.language-option');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const vocabList = document.getElementById('vocabList');
+        const wordInput = document.getElementById('wordInput');
+        const pronounceBtn = document.getElementById('pronounceBtn');
+        const voiceSelect = document.getElementById('voiceSelect');
+        const speedSelect = document.getElementById('speedSelect');
+        const exerciseCards = document.querySelectorAll('.exercise-card');
+        const exerciseArea = document.getElementById('exerciseArea');
+        const settingsVoiceSelect = document.getElementById('settingsVoiceSelect');
+        const settingsSpeedSelect = document.getElementById('settingsSpeedSelect');
+
+        // Navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                
+                // Update active nav link
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show target section
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetSection) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Settings Panel
+        settingsBtn.addEventListener('click', () => {
+            settingsPanel.classList.add('active');
+        });
+
+        closeSettings.addEventListener('click', () => {
+            settingsPanel.classList.remove('active');
+        });
+
+        // Theme Switching
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const theme = button.getAttribute('data-theme');
+                
+                themeButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            });
+        });
+
+        // Language Switching
+        languageOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                // In a real app, we would change the language of all text
+                alert(`سيتم تغيير اللغة إلى ${lang === 'ar' ? 'العربية' : lang === 'fr' ? 'الفرنسية' : 'الإنجليزية'}`);
+            });
+        });
+
+        // Vocabulary Categories
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.getAttribute('data-category');
+                loadVocabulary(category);
+            });
+        });
+
+        // Load Vocabulary
+        function loadVocabulary(category) {
+            vocabList.innerHTML = '';
+            
+            if (vocabularyData[category]) {
+                vocabularyData[category].forEach(item => {
+                    const vocabItem = document.createElement('div');
+                    vocabItem.className = 'vocab-item';
+                    vocabItem.innerHTML = `
+                        <div class="word">${item.word}</div>
+                        <div class="meaning">${item.meaning}</div>
+                        <div class="pronunciation">${item.pronunciation}</div>
+                        <button class="pronounce-btn" data-word="${item.word}">
+                            <i class="fas fa-volume-up"></i> استمع للنطق
+                        </button>
+                    `;
+                    vocabList.appendChild(vocabItem);
+                });
+                
+                // Add event listeners to pronunciation buttons
+                document.querySelectorAll('.pronounce-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const word = btn.getAttribute('data-word');
+                        pronounceWord(word);
+                    });
+                });
+            }
+        }
+
+        // Text-to-Speech Functionality
+        function pronounceWord(word) {
+            const utterance = new SpeechSynthesisUtterance(word);
+            
+            // Set voice type
+            const voiceType = voiceSelect.value;
+            utterance.rate = parseFloat(speedSelect.value);
+            
+            // In a real app, we would set different voices
+            // For this demo, we'll just use the default voice
+            
+            speechSynthesis.speak(utterance);
+        }
+
+        // Pronunciation Section
+        pronounceBtn.addEventListener('click', () => {
+            const word = wordInput.value.trim();
+            if (word) {
+                pronounceWord(word);
+            } else {
+                alert('يرجى إدخال كلمة أو جملة');
+            }
+        });
+
+        // Exercises
+        exerciseCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const exerciseType = card.getAttribute('data-type');
+                loadExercise(exerciseType);
+            });
+        });
+
+        // Load Exercise
+        function loadExercise(type) {
+            exerciseArea.innerHTML = '';
+            
+            if (exerciseData[type] && exerciseData[type].length > 0) {
+                const exercise = exerciseData[type][0];
+                
+                let exerciseHTML = '';
+                
+                if (type === 'multiple-choice') {
+                    exerciseHTML = `
+                        <div class="question">${exercise.question}</div>
+                        <div class="options">
+                            ${exercise.options.map((option, index) => 
+                                `<div class="option" data-index="${index}">${option}</div>`
+                            ).join('')}
+                        </div>
+                        <button class="submit-btn">تحقق من الإجابة</button>
+                        <div class="result"></div>
+                    `;
+                } else if (type === 'fill-blanks') {
+                    exerciseHTML = `
+                        <div class="question">${exercise.question}</div>
+                        <div class="options">
+                            ${exercise.options.map((option, index) => 
+                                `<div class="option" data-index="${index}">${option}</div>`
+                            ).join('')}
+                        </div>
+                        <button class="submit-btn">تحقق من الإجابة</button>
+                        <div class="result"></div>
+                    `;
+                } else if (type === 'matching') {
+                    exerciseHTML = `
+                        <div class="question">${exercise.question}</div>
+                        <div class="matching-exercise">
+                            ${exercise.pairs.map(pair => 
+                                `<div class="matching-pair">
+                                    <div class="word-item">${pair.word}</div>
+                                    <div class="meaning-item">${pair.meaning}</div>
+                                </div>`
+                            ).join('')}
+                        </div>
+                        <button class="submit-btn">تحقق من الإجابة</button>
+                        <div class="result"></div>
+                    `;
+                }
+                
+                exerciseArea.innerHTML = exerciseHTML;
+                
+                // Add event listeners to options
+                const options = exerciseArea.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        option.classList.add('selected');
+                    });
+                });
+                
+                // Add event listener to submit button
+                const submitBtn = exerciseArea.querySelector('.submit-btn');
+                const resultDiv = exerciseArea.querySelector('.result');
+                
+                submitBtn.addEventListener('click', () => {
+                    const selectedOption = exerciseArea.querySelector('.option.selected');
+                    
+                    if (selectedOption) {
+                        const selectedIndex = parseInt(selectedOption.getAttribute('data-index'));
+                        
+                        if (selectedIndex === exercise.correctAnswer) {
+                            resultDiv.textContent = 'إجابة صحيحة! أحسنت!';
+                            resultDiv.className = 'result correct';
+                        } else {
+                            resultDiv.textContent = 'إجابة خاطئة. حاول مرة أخرى!';
+                            resultDiv.className = 'result incorrect';
+                        }
+                    } else {
+                        alert('يرجى اختيار إجابة أولاً');
+                    }
+                });
+            }
+        }
+
+        // Sync settings between pronunciation section and settings panel
+        voiceSelect.addEventListener('change', () => {
+            settingsVoiceSelect.value = voiceSelect.value;
+        });
+        
+        speedSelect.addEventListener('change', () => {
+            settingsSpeedSelect.value = speedSelect.value;
+        });
+        
+        settingsVoiceSelect.addEventListener('change', () => {
+            voiceSelect.value = settingsVoiceSelect.value;
+        });
+        
+        settingsSpeedSelect.addEventListener('change', () => {
+            speedSelect.value = settingsSpeedSelect.value;
+        });
+
+        // Initialize the app with some content
+        document.addEventListener('DOMContentLoaded', () => {
+            loadVocabulary('animals');
+            loadExercise('multiple-choice');
+        });
+    </script>
+</body>
+</html>
